@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let createRequest = function () {
   const Request = axios.create({
-    baseURL: 'http://localhost:3000/'
+    baseURL: '/api'
   })
   return Request
 }

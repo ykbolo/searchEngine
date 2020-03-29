@@ -17,7 +17,7 @@ module.exports = {
     proxy: {
       //配置跨域
       '/api': {//配置跨域的名字
-        target: 'http//localhost:5000/api',//跨域的地址
+        target: 'http//localhost:3000/service',//跨域的地址
         ws: true,
         changOrigin: true,//是否跨域
         pathRewrite: {//当前的名字

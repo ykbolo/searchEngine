@@ -4,7 +4,7 @@ const request = createRequest()
 
 
 const getSearchResult = (keywords) => {
-  return request.get('/service/test', { keywords })
+  return request.post('/service/test', { keywords })
 }
 export default {
   getSearchResult
