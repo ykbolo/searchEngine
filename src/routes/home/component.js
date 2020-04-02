@@ -2,6 +2,9 @@
 
 import service from '../../service/service'
 import appResult from './components/app-result'
+import Vue from 'vue'
+import {Pagination} from 'element-ui'
+Vue.use(Pagination)
 export default {
   data() {
     return {

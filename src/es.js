@@ -13,7 +13,7 @@ var fs = require("fs");
 function createDoc(body) {
   console.log(body)
   client.index({
-    index: 'sudanews',//索引名
+    index: 'search',//索引名
     body: body//索引内容
   })
 }
@@ -23,20 +23,33 @@ app.post('/test', function (req, res) {
   const client = new Client({ node: 'http://localhost:9200' })
   // console.log(req)
   client.search({
-    index:'sudanewsx',
+    index: 'search',
     body: {
       query: {
-        match:{"title": req.body.keywords}
+        bool: {
+          should:[{match:{"title": req.body.keywords}} ,{match:{"body":req.body.keywords}},{match:{"description":req.body.keywords}}]
+        },
+      },
+      highlight: {
+        fields: {
+          title: {},
+          body: {},
+          keywords: {},
+          description: {},
+          imgs: {}
+        }
       }
     }
-  },(err,result)=>{
-    if(err){console.log('err') 
-    return res.json('error')}
+  }, (err, result) => {
+    if (err) {
+      console.log('err')
+      return res.json('error')
+    }
     res.json({
-    data: result
+      data: result
+    })
   })
-  })
-  
+
 })
 
 module.exports = app
