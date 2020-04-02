@@ -10,7 +10,9 @@
           <div class="search" @click="submit">搜索</div>
         </div>
       </div>
+     
     </div>
+     <app-result v-for="el in hits" :json="el" :key="el.url"></app-result>
   </div>
 </template>
 <script src="./component.js">

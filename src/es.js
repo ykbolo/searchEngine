@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const { Client } = require('@elastic/elasticsearch')
 var fs = require("fs");
 // 建立连接
-const client = new Client({ node: 'http://localhost:9200' })
+
 
 // 创建文档
 function createDoc(body) {
@@ -17,33 +17,26 @@ function createDoc(body) {
     body: body//索引内容
   })
 }
-// 读取json文档
-const readIndexFile = (count) => {
-  // 异步读取
-  fs.readFile(`f://txt2json/index${count}.json`, function (err, data) {
-    if (err) {
-      return console.error(err);
-    }
 
-    console.log("异步读取: " + data);
-    createDoc(data)
-  });
-}
-// 以100个文档为例，自动化
-function autoRun() {
-  var count = 1
-  for (count; count <= 100; count++) {
-    readIndexFile(count)
-  }
-}
-// // 执行
-// autoRun()
 
 app.post('/test', function (req, res) {
-  console.log(req)
-  res.json({
-    list: ['1', '2', '3']
+  const client = new Client({ node: 'http://localhost:9200' })
+  // console.log(req)
+  client.search({
+    index:'sudanewsx',
+    body: {
+      query: {
+        match:{"title": req.body.keywords}
+      }
+    }
+  },(err,result)=>{
+    if(err){console.log('err') 
+    return res.json('error')}
+    res.json({
+    data: result
   })
+  })
+  
 })
 
 module.exports = app
