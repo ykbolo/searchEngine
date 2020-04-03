@@ -1,0 +1,40 @@
+{
+  "query": {
+    "bool": {
+      "must":{
+        "match":{
+          "title":{"query":"贝尔塔","boost":10}
+        }
+      },
+      "should":[{
+        "match":{
+          "body":{"query":"贝尔塔","boost":1}
+        }},
+        {"match":{
+          "title":{"query":"贝尔塔","boost":5}
+        }},
+        {"match":{
+          "description":{"query":"贝尔塔","boost":3}
+        }}]
+    }
+  },
+  "highlight":{
+    "fields": {
+      "body":{
+        "fragment_size": 50,
+        "number_of_fragments":5,
+        "no_match_size":15
+      },
+      "title":{
+        "fragment_size": 50,
+        "number_of_fragments":5,
+        "no_match_size":15
+      },
+      "description":{
+        "fragment_size": 50,
+        "number_of_fragments":5,
+        "no_match_size":15
+      }
+    }
+  }
+}

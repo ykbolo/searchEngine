@@ -3,9 +3,9 @@ import createRequest from '../core/client/request'
 const request = createRequest()
 
 
-const getSearchResult = (keywords) => {
-  return request.post('/service/test', { keywords })
+const getSearchResultDefault = (keywords, start, hit) => {
+  return request.post('/service/default', { keywords, start, hit })
 }
 export default {
-  getSearchResult
+  getSearchResultDefault
 }

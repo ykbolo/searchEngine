@@ -18,8 +18,13 @@ function createDoc(body) {
   })
 }
 
-
-app.post('/test', function (req, res) {
+/**
+ * @name 综合权重查询
+ * @params keywords {String} 搜索关键字
+ * @params start {String} 起始位置
+ * @params hit {String} 每页的条数
+ */
+app.post('/default', function (req, res) {
   const client = new Client({ node: 'http://localhost:9200' })
   // console.log(req)
   client.search({
@@ -27,16 +32,46 @@ app.post('/test', function (req, res) {
     body: {
       query: {
         bool: {
-          should:[{match:{"title": req.body.keywords}} ,{match:{"body":req.body.keywords}},{match:{"description":req.body.keywords}}]
-        },
+          must:{
+            match:{
+              title:{query:req.body.keywords,boost:10}
+            }
+          },
+          should:[
+            {
+              match:{
+              body:{query:req.body.keywords,boost:1}
+            }},
+            {
+              match:{
+              title:{query:req.body.keywords,boost:5}
+            }},
+            {
+              match:{
+              description:{query:req.body.keywords,boost:3}
+            }}
+          ]
+        }
       },
-      highlight: {
+      from:req.body.start,
+      size:req.body.hit,
+      highlight:{
         fields: {
-          title: {},
-          body: {},
-          keywords: {},
-          description: {},
-          imgs: {}
+          body:{
+            fragment_size: 50,
+            number_of_fragments:5,
+            no_match_size:15
+          },
+          title:{
+            fragment_size: 50,
+            number_of_fragments:5,
+            no_match_size:15
+          },
+          description:{
+            fragment_size: 50,
+            number_of_fragments:5,
+            no_match_size:15
+          }
         }
       }
     }
@@ -45,9 +80,7 @@ app.post('/test', function (req, res) {
       console.log('err')
       return res.json('error')
     }
-    res.json({
-      data: result
-    })
+    res.json(result)
   })
 
 })

@@ -1,8 +1,22 @@
 .home {
+  em {
+    color:red;
+  }
   .ntp-contents {
     padding-top: 15vh;
     height: 40vh;
-
+    &.collapse {
+      height:20vh;
+      padding-top: 5vh;
+      text-align: left;
+      .logo {
+        text-align: center;
+      }
+      .main-container {
+        margin-top: 3vh;
+        text-align: left;
+      }
+    }
     .logo {
       text-align: center;
 

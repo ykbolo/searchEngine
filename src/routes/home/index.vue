@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="ntp-contents">
+      <div class="ntp-contents" :class="{collapse:hasResult}">
         <div class="logo">
           <img src="./images/logo.jpg" />
         </div>
@@ -16,16 +16,26 @@
                 placeholder="请输入关键字"
               />
             </div>
-            <div class="search" @click="submit">搜索</div>
+            <div class="search" @click="submit()">搜索</div>
           </div>
         </div>
       </div>
-      <div class="block"></div>
-      <div class="col-8">
-        <app-result v-for="el in hits.slice(0,5)" :json="el" :key="el.url"></app-result>
+      <div class="block col-md-10 col-xs-12 col-lg-8" v-if="total">
+        共搜索到
+        <em>{{total}}</em>条数据
+      </div>
+      <div class="col-md-10 col-xs-12 col-lg-8">
+        <app-result v-for="el in list" :json="el" :key="el.url"></app-result>
       </div>
       <div style="margin-top:15px">
-      <el-pagination background layout="prev, pager, next" :total="50" :pageSize=5></el-pagination>
+        <el-pagination
+          v-if="hasResult"
+          background
+          layout="prev, pager, next"
+          :total="50"
+          :pageSize="5"
+          @current-change="handleCurrentChange"
+        ></el-pagination>
       </div>
     </div>
   </div>
