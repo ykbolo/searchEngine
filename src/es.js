@@ -25,52 +25,55 @@ function createDoc(body) {
  * @params hit {String} 每页的条数
  */
 app.post('/default', function (req, res) {
-  const client = new Client({ node: 'http://localhost:9200' })
+  const client = new Client({ node: 'http://10.10.48.168:9200' })
   // console.log(req)
   client.search({
     index: 'search',
     body: {
       query: {
         bool: {
-          must:{
-            match:{
-              title:{query:req.body.keywords,boost:10}
+          must: {
+            match: {
+              title: { query: req.body.keywords, boost: 10 }
             }
           },
-          should:[
+          should: [
             {
-              match:{
-              body:{query:req.body.keywords,boost:1}
-            }},
+              match: {
+                body: { query: req.body.keywords, boost: 1 }
+              }
+            },
             {
-              match:{
-              title:{query:req.body.keywords,boost:5}
-            }},
+              match: {
+                title: { query: req.body.keywords, boost: 5 }
+              }
+            },
             {
-              match:{
-              description:{query:req.body.keywords,boost:3}
-            }}
+              match: {
+                description: { query: req.body.keywords, boost: 3 }
+              }
+            }
           ]
         }
       },
-      from:req.body.start,
-      size:req.body.hit,
-      highlight:{
+      from: req.body.start,
+      size: req.body.hit,
+      highlight: {
         fields: {
-          body:{
+          body: {
             fragment_size: 50,
-            number_of_fragments:5,
-            no_match_size:15
+            number_of_fragments: 5,
+            no_match_size: 15
           },
-          title:{
+          title: {
             fragment_size: 50,
-            number_of_fragments:5,
-            no_match_size:15
+            number_of_fragments: 5,
+            no_match_size: 15
           },
-          description:{
+          description: {
             fragment_size: 50,
-            number_of_fragments:5,
-            no_match_size:15
+            number_of_fragments: 5,
+            no_match_size: 15
           }
         }
       }
