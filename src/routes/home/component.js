@@ -8,7 +8,7 @@ Vue.use(Pagination)
 export default {
   data() {
     return {
-      keywords: '',
+      keywords: '贝尔塔',
       time_take: 0,
       start: 0,
       hit: 10,
@@ -40,7 +40,7 @@ export default {
     getSearchResult(start, hit) {
       service.getSearchResultDefault(this.keywords, start, hit).then((res) => {
         console.log(res)
-        this.time_take = res.data.body.took
+        this.time_take = res.data.body.took || 'timeout'
         this.total = res.data.body.hits.total.value
         this.list = res.data.body.hits.hits
         this.hasResult = true

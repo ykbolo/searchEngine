@@ -1,14 +1,14 @@
 export default {
   name: 'app-result',
-  props: ['json'],
+  props: ['title', 'link', 'body'],
   data() {
     return {
-      title:  this.json.highlight.title.join('') || this.json.highlight.keywords.join('') || this.json.highlight.body.join(''),
-      body: this.json.highlight.body.join('')
+      // title: this.json.highlight.title.join('') || this.json.highlight.keywords.join('') || this.json.highlight.body.join(''),
+      // body: this.json.highlight.body.join('')
     }
 
   },
   mounted() {
-    
+
   }
 }

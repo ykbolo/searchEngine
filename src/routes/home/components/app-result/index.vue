@@ -1,16 +1,17 @@
 <template>
-  <div class="app-result">
+  <div class="app-result margin-t-1x">
     <h4 class="title">
-      <a :href="json._source.url" v-html="json.highlight.title.join('')">{{title}}</a>
+      <a :href="link" v-html="title">{{title}}</a>
     </h4>
-    <div class="main" v-html="body">{{body}}</div>
+    <div class="main" v-html="body">
+
+      {{body}}</div>
   </div>
 </template>
 <script src="./component.js">
 
 </script>
-<style lang="scss">
-.app-result{
-  padding:15px;
-}
+<style lang="scss" src="./style.scss">
+
+
 </style>
