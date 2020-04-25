@@ -9,7 +9,7 @@
     "build:prod": "cross-env NODE_ENV=prod vue-cli-service build --buildconfig.js",
     "lint": "vue-cli-service lint",
     "start:dev": "cross-env NODE_ENV=dev node ./src/start.js",
-    "start:prod": "cross-env NODE_ENV=prod forever start ./src/start.js"
+    "start:prod": "cross-env NODE_ENV=prod node ./src/start.js"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.6.1",

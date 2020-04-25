@@ -10,7 +10,7 @@ import './styles/common.scss'
 import './components'
 import myCharts from 'echarts'
 Vue.use(myCharts)
-Vue.prototype._env_ = process.env.NODE_ENV
+Vue.prototype.$__env__ = process.env.NODE_ENV
 
 
 Vue.config.productionTip = false
