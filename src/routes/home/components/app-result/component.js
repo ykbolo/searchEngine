@@ -9,6 +9,6 @@ export default {
 
   },
   mounted() {
-
+    // this.body.splice(0, 100)
   }
 }

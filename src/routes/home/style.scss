@@ -3,6 +3,16 @@
     color: red !important;
   }
 
+  .sideleft {
+    margin: 10px;
+  }
+
+  .pagination {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+  }
 
   .ntp-contents {
     padding-top: 15vh;
@@ -20,6 +30,7 @@
       .main-container {
         margin-top: 3vh;
         text-align: left;
+        vertical-align: middle;
       }
     }
 

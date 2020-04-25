@@ -8,13 +8,14 @@ Vue.use(Pagination)
 export default {
   data() {
     return {
-      keywords: '贝尔塔',
+      keywords: '',
       time_take: 0,
       start: 0,
       hit: 10,
       list: [],
       hasResult: false,
-      total: 0
+      total: 0,
+      totalText: this.total < 1000 ? this.total : "999+"
     }
   },
   components: {
@@ -42,6 +43,7 @@ export default {
         console.log(res)
         this.time_take = res.data.body.took || 'timeout'
         this.total = res.data.body.hits.total.value
+        this.totalText = +this.total < 1000 ? this.total : "999+"
         this.list = res.data.body.hits.hits
         this.hasResult = true
       })

@@ -1,4 +1,29 @@
 em {
   font-style: normal;
-  color: #f4967f !important;
+  color: #8c0000 !important;
+}
+
+.app-result {
+
+
+
+  .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: underline;
+  }
+
+  .link {
+    color: #04810c;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+  }
+
+  .main {
+    max-height: 100px;
+    overflow: hidden;
+  }
 }
