@@ -3,9 +3,9 @@
     <h4 class="title">
       <a :href="link" v-html="title">{{title}}</a>
     </h4>
+    <div class="link"><img style="width: 16px;margin-right:10px;" src="../../images/连接.svg">{{link}}</div>
     <div class="main" v-html="body">
-
-      {{body}}</div>
+    </div>
   </div>
 </template>
 <script src="./component.js">
@@ -13,5 +13,11 @@
 </script>
 <style lang="scss" src="./style.scss">
 
+
+</style>
+<style lang="scss">
+  .active {
+    background-color: #8c0000 !important;
+  }
 
 </style>
