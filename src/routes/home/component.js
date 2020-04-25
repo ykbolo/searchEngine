@@ -22,7 +22,7 @@ export default {
     [appResult.name]: appResult
   },
   mounted() {
-
+    console.log(this.$__env__)
   },
   methods: {
     /**
