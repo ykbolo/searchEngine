@@ -24,8 +24,8 @@
       <div class="col-md-10 col-xs-12 col-lg-8">
         <app-result v-for="el in list" :title="el.highlight.title.join('') || el.highlight.keywords.join('') || el.highlight.body.join('')" :body="el.highlight.body.join('...')" :link="el._source.url" :key="el.url"></app-result>
       </div>
-      <div style="margin-top:15px" class="pagination">
-        <el-pagination v-if="hasResult" background :small="true" layout="prev, pager, next" :total="total" :pageSize="10" @current-change="handleCurrentChange"></el-pagination>
+      <div class="pagination">
+        <el-pagination v-if="hasResult" background layout="prev, pager, next" :total="total" :pageSize="10" @current-change="handleCurrentChange"></el-pagination>
       </div>
     </div>
   </div>
