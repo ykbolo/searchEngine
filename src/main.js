@@ -8,7 +8,8 @@ import './styles/global.scss'
 import './styles/common.scss'
 
 import './components'
-
+import myCharts from 'echarts'
+Vue.use(myCharts)
 Vue.prototype._env_ = process.env.NODE_ENV
 
 
