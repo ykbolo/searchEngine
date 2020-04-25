@@ -17,7 +17,7 @@ function createDoc(body) {
     body: body//索引内容
   })
 }
-
+const client = new Client({ node: 'http://127.0.0.1:9200' })
 /**
  * @name 综合权重查询
  * @params keywords {String} 搜索关键字
@@ -25,7 +25,7 @@ function createDoc(body) {
  * @params hit {String} 每页的条数
  */
 app.post('/default', function (req, res) {
-  const client = new Client({ node: 'http://10.10.48.168:9200' })
+  // const client = new Client({ node: 'http://10.10.48.168:9200' })
   // console.log(req)
   client.search({
     index: 'search',
@@ -61,19 +61,19 @@ app.post('/default', function (req, res) {
       highlight: {
         fields: {
           body: {
-            fragment_size: 50,
-            number_of_fragments: 5,
-            no_match_size: 15
+            fragment_size: 15,
+            number_of_fragments: 3,
+            no_match_size: 10
           },
           title: {
-            fragment_size: 50,
-            number_of_fragments: 5,
-            no_match_size: 15
+            fragment_size: 15,
+            number_of_fragments: 2,
+            no_match_size: 10
           },
           description: {
-            fragment_size: 50,
-            number_of_fragments: 5,
-            no_match_size: 15
+            fragment_size: 15,
+            number_of_fragments: 2,
+            no_match_size: 10
           }
         }
       }
