@@ -52,6 +52,11 @@ app.post('/default', function (req, res) {
               match: {
                 description: { query: req.body.keywords, boost: 3 }
               }
+            },
+            {
+              match: {
+                keywords: { query: req.body.keywords, boost: 3 }
+              }
             }
           ]
         }

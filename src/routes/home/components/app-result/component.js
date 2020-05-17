@@ -1,6 +1,6 @@
 export default {
   name: 'app-result',
-  props: ['title', 'link', 'body'],
+  props: ['title', 'link', 'body', 'index'],
   data() {
     return {
       // title: this.json.highlight.title.join('') || this.json.highlight.keywords.join('') || this.json.highlight.body.join(''),
