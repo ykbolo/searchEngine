@@ -40,14 +40,12 @@ export default {
      */
     getSearchResult(start, hit) {
       service.getSearchResultDefault(this.keywords, start, hit).then((res) => {
-        console.log(res)
-        this.time_take = res.data.body.took || 'timeout'
-        this.total = res.data.body.hits.total.value
-        this.totalText = +this.total < 1000 ? this.total : "999+"
-        this.list = res.data.body.hits.hits
-        this.hasResult = true
+        this.time_take = res.data.body.took || 'timeout'//耗时
+        this.total = res.data.body.hits.total.value//总数
+        this.totalText = +this.total < 1000 ? this.total : "999+"//总数显示
+        this.list = res.data.body.hits.hits//搜索结果列表
+        this.hasResult = true//是否有搜索结果
       })
-      // console.log(this.keywords)
     },
     /**
      * @name 监听分页器改变事件
